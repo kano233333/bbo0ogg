@@ -2,11 +2,14 @@ const webpack = require('webpack');
 const path = require('path');
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-var hotMiddlewareScript = 'webpack-hot-middleware/client'
+var hotMiddlewareScript = 'webpack-hot-middleware/client';
   
 module.exports = {
   entry: {
-    entry: ['./views/App.js',hotMiddlewareScript]
+    entry: [
+      // hotMiddlewareScript,
+      './views/App.js'
+    ]
   },
   mode: 'development',
   output: {
@@ -22,6 +25,7 @@ module.exports = {
         test: /\.js|\.jsx$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
+        // loaders:['react-hot-loader','babel-loader'],
         query:{
           presets:['react','es2015']
         }
@@ -36,7 +40,7 @@ module.exports = {
   plugins: [
     new htmlWebpackPlugin({
       filename: "index.html",
-      template: "index.html",
+      template: "./views/index.html",
       inject: "body"
     }),
     // new ExtractTextPlugin("./public/dist/stylesheets/main.css")

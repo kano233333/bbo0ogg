@@ -13,5 +13,5 @@ module.exports = app => {
       chunks: false
     }
   }))
-  app.use(webpackHotMiddleware(compiler))  
+  // app.use(webpackHotMiddleware(compiler))  
 }
