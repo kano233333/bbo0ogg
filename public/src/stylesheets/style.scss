@@ -1,0 +1,92 @@
+@import './const';
+* {
+  padding: 0;
+  margin: 0;
+  transition: 0.3s all;
+}
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+header {
+  background-color: #484848;
+}
+header>p {
+  padding:15px 0;
+  color:#fff;
+  font-size:18px;
+}
+
+.main {
+  margin:30px 150px;
+}
+
+.form>p {
+  margin: 20px;
+  font-size:18px;
+}
+
+.form button,.btn {
+  background-color: #333333;
+  color:#fff;
+  border:none;
+  outline:none;
+  padding:5px 15px;
+  font-size:15px;
+  cursor: pointer;
+  transition:0.3s all;
+}
+
+.form button:hover {
+  box-shadow: 0 0 1px #000;
+}
+
+.full-screen {
+  width: 100vw;
+  height: 100vh;
+  font-size: 0;
+}
+
+//background-color
+@each $key,$value in $color-list {
+  .bg-#{$key} {
+    background-color: $value;
+  }
+}
+
+//center
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//reset
+button, input, textarea {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+button:hover, input:hover {
+  box-shadow: 0 0 3px #fff;
+}
+
+li, lo {
+  list-style: none;
+}
+
+//...
+.mask {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  background-color: rgba(123,123,123,0.5);
+  z-index: 4;
+}

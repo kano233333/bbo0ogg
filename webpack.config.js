@@ -2,11 +2,13 @@ const webpack = require('webpack');
 const path = require('path');
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+var hotMiddlewareScript = 'webpack-hot-middleware/client'
   
 module.exports = {
   entry: {
-    entry: './views/App.js'
+    entry: ['./views/App.js',hotMiddlewareScript]
   },
+  mode: 'development',
   output: {
     path: path.resolve(__dirname, './public/dist'),
     filename: "bundle.js"
@@ -37,6 +39,9 @@ module.exports = {
       template: "index.html",
       inject: "body"
     }),
-    // new ExtractTextPlugin("/public/dist/stylesheets/main.css")
+    // new ExtractTextPlugin("./public/dist/stylesheets/main.css")
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
   ] 
 }

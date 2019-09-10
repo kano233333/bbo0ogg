@@ -9,6 +9,23 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+const webpackMiddleware = require('./webpack.middleware');
+webpackMiddleware(app);
+
+// var webpack = require('webpack');
+// var webpackConfig = require('./webpack.config.js');
+// var compiler = webpack(webpackConfig,function(err,stats){
+//   console.log(stats.toString({
+//       colors:true
+//   }));
+//   compiler.watch({
+//       aggregateTimeout: 300,
+//       poll: undefined
+//   },function(err,stats){
+
+//   })
+// });
+
 // view engine setup
 var ejs = require('ejs');
 app.set('views', path.join(__dirname, 'views'));
