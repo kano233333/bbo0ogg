@@ -1,0 +1,136 @@
+@import '../../public/src/stylesheets/const';
+@import '../../public/src/stylesheets/solarized-light';
+#container {
+  width: 100vw;
+  height: 100vh;
+  background-color: $primary;
+}
+
+.edit-header {
+  height: 100px;
+}
+
+.edit-wrap {
+  display: flex;
+  justify-content: center;
+  .edit-box {
+    min-width: 500px;
+    height: 720px;
+    position: relative;
+    transition: 1s all ease;
+    box-shadow: 2px 2px 10px #04469b;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .box {
+    width: 100%;
+    height: 100%;
+    padding-right: 42px;
+    overflow-y: auto;
+  }
+  textarea {
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-size: 18px;
+    color: #fff;
+    padding-right: 42px;
+  }
+  .edit-box-left {
+    width: 50%;
+    left: 20px;
+    background-color: #fff;
+  }
+  .edit-box-right {
+    width: 42%;
+    right: 20px;
+    background-color: #000;
+  }
+}
+
+.edit-box {
+  h1,h2,h3,h4,h5,ul,blockquote {
+    margin: 15px 0;
+  }
+  blockquote {
+    border-left: 4px solid #999;
+    background-color: rgba(237, 237, 237, 0.5);
+    padding: 10px 10px;
+  }
+  blockquote:hover {
+    box-shadow: 0 0 1px rgba(117, 117, 117, 0.8);
+  }
+  hr {
+    margin: 15px 0;
+  }
+  li {
+    list-style: inside;
+  }
+}
+
+.alert {
+  width: 650px;
+  height: 550px;
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color: $primary;
+  margin: auto;
+  padding: 25px;
+  box-sizing: border-box;
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+  .cancel {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: url("../../public/src/images/cancel.svg") no-repeat center;
+    background-size: 90%;
+    background-color: #04469b;
+    position: absolute;
+    right:-25px;
+    top:-25px;
+    box-shadow: 0 0 5px #333;
+  }
+  .cancel:hover,.sure:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px #6e3303;
+  }
+  .sure {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: url("../../public/src/images/sure.svg") no-repeat center;
+    background-size: 80%;
+    background-color: $warning;
+    position: absolute;
+    right:10px;
+    bottom:10px;
+    box-shadow: 0 0 5px #6e3303;
+  }
+}
+.alert:before {
+  width: 600px;
+  height: 500px;
+  content: '';
+  position: absolute;
+  top:25px;
+  left:25px;
+  background-color: #fff;
+  box-shadow: 0 0 10px #032c61;
+  z-index: -1;
+  border-radius: 10px;
+}
+
+.unshow {
+  display: none;
+  background: #000;
+}
