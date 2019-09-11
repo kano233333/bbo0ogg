@@ -90,3 +90,48 @@ li, lo {
   background-color: rgba(123,123,123,0.5);
   z-index: 4;
 }
+.unshow {
+  display: none;
+}
+
+//animation
+@keyframes block_scale {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opactiy: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes block_scale_1 {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opactiy: 1;
+    transform: scale(1);
+  }
+}
+
+
+@keyframes none_scale {
+  0% {
+    transform: scale(1);
+    display: block;
+  }
+  99% {
+    display: block;
+  }
+  100% {
+    transform: scale(0);
+    display: none;
+  }
+}

@@ -1,8 +1,15 @@
 import React from 'react'
+import './index.scss'
+import Nav from '../components/nav'
 
 class EssayTimeList extends React.Component {
   render(){
-    return (<h2>EssayTimeList</h2>)
+    return (
+      <div id="container" className="list_wrap">
+        <Nav></Nav>
+        <div className='list_box'></div>
+      </div>
+    )
   }
 }
 
