@@ -1,13 +1,12 @@
 import React from 'react'
 import './index.scss'
-import Nav from '../components/nav'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 
 class EssayTimeList extends React.Component {
   render(){
     return (
-      <div id="container" className="list_wrap">
-        <Nav></Nav>
-        <div className='list_box'></div>
+      <div>
+        <h2>EssayTimeList</h2>
       </div>
     )
   }
