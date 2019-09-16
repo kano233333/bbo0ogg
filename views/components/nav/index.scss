@@ -26,6 +26,22 @@
     }
   }
   .nav_btn:hover {
-    transform: scale(1.1);
+    .nav-tag {
+      opacity:1;
+      transform: translate(0px);
+    }
+  } 
+  .nav-tag {
+    right: 70px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    min-width: 35px;
+    height: 20px;
+    opacity:0;
+    transform: translate(-30px);
+  }
+  .nav_btn:hover {
+    box-shadow: 1px 1px 5px rgba(51,51,51,0.5);
   }
 }

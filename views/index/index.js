@@ -5,7 +5,7 @@ class Index extends React.Component {
   render(){
     return (<div id="index">
       <h2>index</h2>
-      <a href="/essayTimeList">click</a>
+      <a href="/main/essayTimeList">click</a>
     </div>)
   }
 }

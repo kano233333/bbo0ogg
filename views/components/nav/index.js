@@ -2,6 +2,7 @@ import React from 'react'
 import './index.scss'
 import { Link } from 'react-router-dom'
 import { nav } from '../../../public/src/javascripts/const'
+import SmallTag from '../smallTag'
 import essay from '../../../public/src/images/essay.svg'
 import tag from '../../../public/src/images/tag.svg'
 import works from '../../../public/src/images/works.svg'
@@ -33,6 +34,7 @@ class Nav extends React.Component {
     var navList = nav.map((item,index) =>
       <Link to={`/main${item.link}`} className="nav_btn" key={index} style={{display:this.state.moreState}}>
         <img src={navImgs[index]} />
+        <SmallTag className='nav-tag' tag={item.name} />
       </Link>
     )
     return (

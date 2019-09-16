@@ -1,7 +1,18 @@
 .axis {
-  margin: 20px;
-  .axis-left {
-    border-left: 2px solid #333;
-    height: 300px;
+  padding: 20px 20px 20px 100px;
+  box-sizing: border-box;
+  .axis-wrap {
+    border-left: 2px dashed #333;
+    padding: 20px;
+  }
+  .list {
+    height: 150px;
+    width: 70%;
+    border-bottom: 2px dashed #333;
+    margin: 40px 0;
+  }
+  .axis-tag {
+    left: 35px;
+    animation: 1s enter_left forwards;
   }
 }
