@@ -34,3 +34,11 @@ This is usually because the modules which have changed (and their parents) do no
 > dev模式下，只有index路由下会自己添加打包后的js，其他路由都没有。。。
 >
 > 现在手动添加吧，后面再慢慢找原因的，哎，都是要还的
+
+> 好吧，这个又要歇业了，关于时间轴标签的问题想到的方法先写在这里
+>
+> １．在子组件里监听scroll，到最小scrolltop设置fixed
+>
+> ２．在父组件里监听scroll，触发子组件
+>
+> 都还是要获取子组件的target

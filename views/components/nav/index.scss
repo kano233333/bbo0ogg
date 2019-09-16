@@ -29,6 +29,7 @@
     .nav-tag {
       opacity:1;
       transform: translate(0px);
+      visibility: visible;
     }
   } 
   .nav-tag {
@@ -40,6 +41,7 @@
     height: 20px;
     opacity:0;
     transform: translate(-30px);
+    visibility: hidden;
   }
   .nav_btn:hover {
     box-shadow: 1px 1px 5px rgba(51,51,51,0.5);

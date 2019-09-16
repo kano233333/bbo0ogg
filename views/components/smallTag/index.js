@@ -8,7 +8,7 @@ class Axis extends React.Component {
   }
   render(){
     return (
-      <div className={`small-tag ${this.props.className}`}>
+      <div className={`small-tag ${this.props.className}`} style={this.props.style}>
         <span>{this.props.tag}</span>
         <div className="jt"></div>
       </div>

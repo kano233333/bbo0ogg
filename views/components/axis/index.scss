@@ -1,6 +1,7 @@
 .axis {
   padding: 20px 20px 20px 100px;
   box-sizing: border-box;
+  position: relative;
   .axis-wrap {
     border-left: 2px dashed #333;
     padding: 20px;
@@ -12,7 +13,8 @@
     margin: 40px 0;
   }
   .axis-tag {
-    left: 35px;
+    // top: 80px;
+    left: 18px;
     animation: 1s enter_left forwards;
   }
 }

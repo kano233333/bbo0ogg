@@ -2,10 +2,14 @@
 .list_wrap {
   padding: 15px;
   box-sizing: border-box;
+  -ms-overflow-style:none;
 }
 .list_box {
   width: 100%;
   background-color:#fff;
   box-shadow: 0 0 5px $main-deep;
   min-height: calc(100vh - #{30px});
+}
+::-webkit-scrollbar{
+  display:none;
 }
