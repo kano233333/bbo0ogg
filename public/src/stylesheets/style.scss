@@ -93,6 +93,11 @@ li, lo {
 .unshow {
   display: none;
 }
+.over_slh {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
 
 //animation
 @keyframes block_scale {
