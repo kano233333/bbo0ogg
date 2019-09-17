@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.scss'
-import SmallTag from '../../components/smallTag'
+import AxisList from './axisList.js'
 
 const a = [
     {
@@ -52,43 +52,9 @@ const a = [
     }
   ]
 
-const fixedD = {
-  position: 'fixed',
-  top: '20px',
-  left:'35px'
-}
 class Axis extends React.Component {
   constructor(props){
     super(props)
-    this.handleScroll = this.handleScroll.bind(this)
-    this.AxisList = this.AxisList.bind(this)
-    this.state = {
-      styleTag:{}
-    }
-  }
-  AxisList(props){
-    return (
-      <div className='list'>
-        {/* <SmallTag className='axis-tag' style={{display:props.isFirstY}} tag={props.time.split('-')[0]} /> */}
-        <SmallTag className='axis-tag' style={this.state.styleTag} tag={props.time.split('-')[0]} />
-        <p>{props.title}</p>
-      </div>
-    )
-  }
-  handleScroll(event){
-    var sTop = document.documentElement.scrollTop;
-    if(sTop>500){
-      this.setState({
-        styleTag:fixedD
-      })
-    }else{
-      this.setState({
-        styleTag:{}
-      })
-    }
-  }
-  componentDidMount(){
-    window.addEventListener('scroll', this.handleScroll)
   }
   render(){
     var t;
@@ -106,7 +72,7 @@ class Axis extends React.Component {
               }
               props.year = year;
               t = year;
-              return <this.AxisList {...props} key={key} />
+              return <AxisList {...props} key={key} />
             })
           }
         </div>

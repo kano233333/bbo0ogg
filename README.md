@@ -35,10 +35,6 @@ This is usually because the modules which have changed (and their parents) do no
 >
 > 现在手动添加吧，后面再慢慢找原因的，哎，都是要还的
 
-> 好吧，这个又要歇业了，关于时间轴标签的问题想到的方法先写在这里
+> 时间轴标签的问题
 >
-> １．在子组件里监听scroll，到最小scrolltop设置fixed
->
-> ２．在父组件里监听scroll，触发子组件
->
-> 都还是要获取子组件的target
+> 监听滚动条的事件写在子组件里的，总觉得怪怪的。。。写在父组件里又有问题，先这样吧，那个动画也怪怪的。。。
