@@ -13,3 +13,20 @@
 ::-webkit-scrollbar{
   display:none;
 }
+
+.essay-detail {
+  display: flex;
+  .catalog {
+    width: 20%;
+    height: 400px;
+    border-right: 1px solid #333;
+  }
+  .content {
+    width:80%;
+    height: 400px;
+    border: 1px solid #999;
+    h2 {
+      font-size: 25px;
+    }
+  }
+}

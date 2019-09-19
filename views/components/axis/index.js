@@ -56,6 +56,10 @@ class Axis extends React.Component {
   constructor(props){
     super(props)
   }
+  toEssayDetail(){
+    console.log('sss')
+    window.location.href = '/main/essay'
+  }
   render(){
     var t;
     return (
@@ -72,7 +76,7 @@ class Axis extends React.Component {
               }
               props.year = year;
               t = year;
-              return <AxisList {...props} key={key} />
+              return <AxisList onClick={this.toEssayDetail} {...props} key={key} />
             })
           }
         </div>

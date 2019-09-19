@@ -1,17 +1,6 @@
 import React from 'react'
 import './index.scss'
-import { default as markdown } from 'markdown-it'
-import * as hljs from 'highlightjs'
-let md = new markdown({
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(lang, str).value;
-      } catch (__) {}
-    }
-    return '';
-  }
-})
+import Md from '../components/md'
 
 const styleTop = {top: '-20px', zIndex:3};
 const styleBottom =  {top: '20px'};
@@ -49,8 +38,9 @@ class Edit extends React.Component {
   getInputVal(e){
     e.persist()
     this.setState({
-      content: md.render(e.target.value)
+      content: e.target.value
     })
+    this.refs.edit.resetContent(e.target.value)
   }
   render(){
     return (
@@ -61,7 +51,7 @@ class Edit extends React.Component {
       </div>
       <div className="edit-wrap">
         <div className="edit-box edit-box-left" style={this.state.styleLeft} onClick={this.clickLeft}>
-          <div className="box" dangerouslySetInnerHTML={{__html: this.state.content}}></div>
+          <Md ref='edit' className='box' content={this.state.content} />
         </div>
         <div className="edit-box edit-box-right" style={this.state.styleRight} onClick={this.clickRight}>
           <textarea onChange={this.getInputVal}></textarea>

@@ -43,7 +43,7 @@ class AxisList extends React.Component {
       smallTagDom = <SmallTag className='axis-tag' style={this.state.styleTag} tag={timeArr[0]} />
     }
     return (
-      <div className='list' ref='list'>
+      <div className='list' ref='list' onClick={this.props.onClick}>
         {smallTagDom}
         <div className='list-head'>
           <div className='title over_slh'>
