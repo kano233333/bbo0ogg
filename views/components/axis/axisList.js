@@ -1,6 +1,6 @@
 import React from 'react'
 import SmallTag from '../smallTag'
-import {monthData} from '../../../public/src/javascripts/const.js'
+import { MonthDom, ColorUnderline } from '../common/index'
 
 const fixedD = {
   position: 'fixed',
@@ -34,11 +34,6 @@ class AxisList extends React.Component {
   }
   render(){
     var smallTagDom, timeArr = this.props.time.split('-');
-    var m = monthData[timeArr[1]-1];
-    var monthStyle = {
-      backgroundColor: m.color,
-      color: m.font_color
-    };
     if(this.props.isFirstY=='block'){
       smallTagDom = <SmallTag className='axis-tag' style={this.state.styleTag} tag={timeArr[0]} />
     }
@@ -49,11 +44,11 @@ class AxisList extends React.Component {
           <div className='title over_slh'>
             <h2>
               {this.props.title}
-              <span className='underline' style={{backgroundColor:m.color}}></span>
+              <ColorUnderline month={timeArr[1]} />
             </h2>
           </div>
           <p>
-            <span className='month' style={monthStyle}>{m.zh}</span>
+            <MonthDom month={timeArr[1]} />
             <span className='time'>{this.props.time}</span>
           </p>
         </div>

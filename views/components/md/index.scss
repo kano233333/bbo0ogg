@@ -1,0 +1,27 @@
+@import '../../../public/src/stylesheets/solarized-light';
+
+.md {
+  position: relative;
+  h1,h2,h3,h4,h5,ul,blockquote {
+    margin: 15px 0;
+  }
+  blockquote {
+    border-left: 4px solid #999;
+    background-color: rgba(237, 237, 237, 0.5);
+    padding: 10px 10px;
+  }
+  blockquote:hover {
+    box-shadow: 0 0 1px rgba(117, 117, 117, 0.8);
+  }
+  hr {
+    margin: 15px 0;
+  }
+  li {
+    list-style: inside;
+  }
+  .table-of-contents {
+    position: absolute;
+    top:0;
+    right: 0;
+  }
+}

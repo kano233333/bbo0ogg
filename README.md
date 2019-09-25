@@ -38,3 +38,7 @@ This is usually because the modules which have changed (and their parents) do no
 > 时间轴标签的问题
 >
 > 监听滚动条的事件写在子组件里的，总觉得怪怪的。。。写在父组件里又有问题，先这样吧，那个动画也怪怪的。。。
+
+> markdown-it的原理要去学一下（这个有点东西），不然目录不好提取出来　
+
+> 好吧，又要拖了~~最近破事真的多我都大三了能不能让我歇歇啊啊啊（小声哔哔）~~

@@ -98,6 +98,10 @@ li, lo {
   text-overflow:ellipsis;
   white-space: nowrap;
 }
+.p-radius {
+  padding: 0 5px;
+  border-radius: 5px;
+}
 
 //animation
 @keyframes block_scale {
