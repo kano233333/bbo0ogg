@@ -1,6 +1,7 @@
 import React from 'react'
 import './index.scss'
 import Md from '../components/md'
+import { ajax, formatTime } from '../components/common'
 
 const styleTop = {top: '-20px', zIndex:3};
 const styleBottom =  {top: '20px'};
@@ -17,6 +18,7 @@ class Edit extends React.Component {
     this.clickLeft = this.clickLeft.bind(this);
     this.clickRight = this.clickRight.bind(this);
     this.getInputVal = this.getInputVal.bind(this);
+    this.postEssay = this.postEssay.bind(this);
   }
   shiftAlert(){
     this.setState({
@@ -42,6 +44,24 @@ class Edit extends React.Component {
     })
     this.refs.edit.resetContent(e.target.value)
   }
+
+  postEssay(){
+    var _this = this;
+    ajax({
+      url:'/addEssay',
+      method: 'POST',
+      data: {
+        title: this.refs.title.value,
+        content: _this.state.content,
+        time: formatTime(new Date),
+        tag:[]
+      },
+      success: function(res){
+        console.log(res)
+      }
+    })
+  }
+
   render(){
     return (
     <div id="container">
@@ -62,13 +82,13 @@ class Edit extends React.Component {
           <div className="cancel ball-img" onClick={this.shiftAlert}></div>
           <div>
             <span>标题</span>
-            <input />
+            <input ref="title" />
           </div>
           <div>
             <span>标签</span>
             <input />
           </div>
-          <div className="sure ball-img"></div>
+          <div className="sure ball-img" onClick={this.postEssay}></div>
         </div>
       </div>
     </div>
