@@ -1,18 +1,31 @@
 import React from 'react'
 import './index.scss'
 import Axis from '../components/axis'
-import { ajax } from '../components/common'
+import { ajax, reFormatTime } from '../components/common'
 
 class EssayTimeList extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      essays: []
+    }
+  }
   componentDidMount(){
+    let _this = this;
     ajax({
       url: '/getEssay',
-      method: 'GET',
+      method: 'POST',
       data: {
         page: 1
       },
       success: function(res){
-        console.log(res)
+        res.data.map((value)=>{
+          value.time = reFormatTime(value.time);
+          return value;
+        })
+        _this.setState({
+          essays: res.data
+        })
       }
     })
   }
@@ -20,7 +33,7 @@ class EssayTimeList extends React.Component {
     return (
       <div>
         <div>
-          <Axis />
+          <Axis essays={this.state.essays} />
         </div>
       </div>
     )

@@ -55,6 +55,7 @@ const a = [
 class Axis extends React.Component {
   constructor(props){
     super(props)
+    console.log(props)
   }
   toEssayDetail(){
     console.log('sss')

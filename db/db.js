@@ -51,9 +51,12 @@ exports.deleteMany = function(collectionName,json,callback){
 
 exports.find = function(collectionName,json,callback){
   _connectDB(function(err,db){
-    db.collection(collectionName).find(json).toArray( (err,value) => {
-      console.log(value)
-      callback(err,value);
+    db.collection(collectionName).find(json.data).skip(json.skip).limit(json.limit).toArray( (err,result) => {
+      if(err == null){
+        callback(1,result);
+      }else{
+        callback(0,result);
+      }
       db.close();
     });
   })

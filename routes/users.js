@@ -14,10 +14,16 @@ router.post('/addEssay', function(req, res, next){
   })
 });
 
-router.get('/getEssay', function(req, res, next){
+router.post('/getEssay', function(req, res, next){
   console.log(req.body)
-  let _body = req.body || {};
-  db.find('essay', _body, (static, result) => {
+  let _body = req.body;
+  let _data = {
+    data: {},
+    skip: 20 * (_body.page - 1),
+    limit: 20
+  };
+  console.log(_data);
+  db.find('essay', _data, (static, result) => {
     res.send({
       static: static,
       data: result

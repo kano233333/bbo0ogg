@@ -85,4 +85,14 @@ function ColorUnderline(props){
   )
 }
 
-export { MonthDom, ColorUnderline, ajax, formatTime }
+const reFormatTime = time => {
+  let num = [4, 2, 2, 2, 2, 2];
+  let a = [],i = 0;
+  num.map((n)=>{
+    a.push(time.substr(i,n));
+    i = i + n;
+  })
+  return a.slice(0,3).join('-') + " " +a.slice(3,6).join('-');
+}
+
+export { MonthDom, ColorUnderline, ajax, formatTime, reFormatTime }

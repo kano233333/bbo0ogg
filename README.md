@@ -41,4 +41,4 @@ This is usually because the modules which have changed (and their parents) do no
 
 > markdown-it的原理要去学一下（这个有点东西），不然目录不好提取出来　
 
-> 额，先写这接口吧。。。
+> 路由：react-router express这边写的get *　全都返回index.html,接口只有全部都用post。后面再想更好的办法吧，express这个路由优先级感觉怪怪的×_×
