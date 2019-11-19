@@ -10,9 +10,11 @@ const fixedD = {
 class AxisList extends React.Component {
   constructor(props){
     super(props)
-    this.state = {
-      styleTag:{}
-    }
+    console.log(props)
+    this.state ={ 
+      props,
+      styleTag: {}
+    };
     this.handleScroll = this.handleScroll.bind(this)
   }
   componentDidMount(){
@@ -34,6 +36,7 @@ class AxisList extends React.Component {
   }
   render(){
     var smallTagDom, timeArr = this.props.time.split('-');
+    console.log(timeArr)
     if(this.props.isFirstY=='block'){
       smallTagDom = <SmallTag className='axis-tag' style={this.state.styleTag} tag={timeArr[0]} />
     }
@@ -64,6 +67,7 @@ class AxisList extends React.Component {
         </div>
       </div>
     )
+    return <div></div>
   }
 }
 

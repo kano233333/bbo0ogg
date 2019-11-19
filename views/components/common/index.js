@@ -92,7 +92,7 @@ const reFormatTime = time => {
     a.push(time.substr(i,n));
     i = i + n;
   })
-  return a.slice(0,3).join('-') + " " +a.slice(3,6).join('-');
+  return a.slice(0,3).join('-') + " " +a.slice(3,6).join(':');
 }
 
 export { MonthDom, ColorUnderline, ajax, formatTime, reFormatTime }

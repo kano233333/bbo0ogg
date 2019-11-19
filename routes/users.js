@@ -31,4 +31,19 @@ router.post('/getEssay', function(req, res, next){
   })
 })
 
+router.post('/getEssayDetail', function(req, res, next){
+  console.log(req.body)
+  let _body = req.body;
+  let _data = {
+    _id: _body._id
+  };
+  console.log(_data);
+  db.findOne('essay', {}, (static, result) => {
+    res.send({
+      static: static,
+      data: result
+    })
+  })
+})
+
 module.exports = router;

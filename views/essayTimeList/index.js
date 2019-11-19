@@ -7,7 +7,8 @@ class EssayTimeList extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      essays: []
+      essays: [],
+      loadding: false
     }
   }
   componentDidMount(){
@@ -24,16 +25,23 @@ class EssayTimeList extends React.Component {
           return value;
         })
         _this.setState({
-          essays: res.data
+          essays: res.data,
+          loadding: true
         })
       }
     })
   }
   render(){
+    let main;
+    if(this.state.loadding){
+      main = <Axis essays={this.state.essays} />
+    }else{
+      main = <h2>loadding...</h2>
+    }
     return (
       <div>
         <div>
-          <Axis essays={this.state.essays} />
+          {main}
         </div>
       </div>
     )

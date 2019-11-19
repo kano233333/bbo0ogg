@@ -2,64 +2,33 @@ import React from 'react'
 import './index.scss'
 import AxisList from './axisList.js'
 
-const a = [
-    {
-      time:'2019-1-3',
-      title:'三季度开始就卡机的空间撒娇的',
-      tags:['js','css'],
-      excerpt:'激发科技贷款及付款的就是空间发的是健康路附近都付了款手机打开了附近的家里附近的身份的看法就是点击放大师傅开始锻炼减肥的时间激发科技贷款及付款的就是空间发的是健康路附近都付了款手机打开了附近的家里附近的身份的看法就是点击放大师傅开始锻炼减肥的时间激发科技贷款及付款的就是空间发的是健康路附近都付了款手机打开了附近的家里附近的身份的看法就是点击放大师傅开始锻炼减肥的时间'
-    },
-    {
-      time:'2019-2-1',
-      title:'三季度开始就卡机的空间撒娇的',
-      tags:[],
-      excerpt:'激发科技贷款及付款的就是空间发的是健康路附近都付了款手机打开了附近的家里附近的身份的看法就是点击放大师傅开始锻炼减肥的时间'
-    },
-    {
-      time:'2018-12-1',
-      title:'三季度开始就卡机的空间撒娇的',
-      tags:[],
-      excerpt:'激发科技贷款及付款的就是空间发的是健康路附近都付了款手机打开了附近的家里附近的身份的看法就是点击放大师傅开始锻炼减肥的时间'
-    },
-    {
-      time:'2017-5-1',
-      title:'三季度开始就卡机的空间撒娇的',
-      tags:[],
-      excerpt:'激发科技贷款及付款的就是空间发的是健康路附近都付了款手机打开了附近的家里附近的身份的看法就是点击放大师傅开始锻炼减肥的时间'
-    },
-    {
-      time:'2017-4-1',
-      title:'三季度开始就卡机的空间撒娇的',
-      tags:[],
-      excerpt:'激发科技贷款及付款的就是空间发的是健康路附近都付了款手机打开了附近的家里附近的身份的看法就是点击放大师傅开始锻炼减肥的时间'
-    },
-    {
-      time:'2017-12-1',
-      title:'三季度开始就卡机的空间撒娇的',
-      tags:[],
-      excerpt:'激发科技贷款及付款的就是空间发的是健康路附近都付了款手机打开了附近的家里附近的身份的看法就是点击放大师傅开始锻炼减肥的时间'
-    },
-    {
-      time:'2017-4-1',
-      title:'三季度开始就卡机的空间撒娇的',
-      tags:[],
-      excerpt:'激发科技贷款及付款的就是空间发的是健康路附近都付了款手机打开了附近的家里附近的身份的看法就是点击放大师傅开始锻炼减肥的时间'
-    },{
-      time:'2016-12-1',
-      title:'三季度开始就卡机的空间撒娇的',
-      tags:[],
-      excerpt:'激发科技贷款及付款的就是空间发的是健康路附近都付了款手机打开了附近的家里附近的身份的看法就是点击放大师傅开始锻炼减肥的时间'
-    }
-  ]
-
 class Axis extends React.Component {
   constructor(props){
-    super(props)
-    console.log(props)
+    super(props);
+    this.state = {
+      essays: []
+    };
   }
-  toEssayDetail(){
-    console.log('sss')
-    window.location.href = '/main/essay'
+  componentDidMount(){
+    this.init();
+  }
+  init(){
+    var essays = [];
+    this.props.essays.map((item)=>{
+      essays.push({
+        _id: item._id,
+        time: item.time,
+        title: item.title,
+        tags: item.tag,
+        excerpt: item.content.substr(0,30)
+      })
+    })
+    this.setState({
+      essays: essays
+    })
+  }
+  toEssayDetail(_id){
+    window.location.href = `/main/essay/${_id}`
   }
   render(){
     var t;
@@ -67,7 +36,7 @@ class Axis extends React.Component {
       <div className='axis'>
         <div className='axis-wrap'>
           {
-            a.map((value,key)=>{
+            this.state.essays.map((value,key)=>{
               var props = value;
               var year = value.time.split('-')[0];
               if(t==year){
@@ -77,7 +46,7 @@ class Axis extends React.Component {
               }
               props.year = year;
               t = year;
-              return <AxisList onClick={this.toEssayDetail} {...props} key={key} />
+              return <AxisList onClick={this.toEssayDetail.bind(this, value._id)} {...props} key={key} />
             })
           }
         </div>

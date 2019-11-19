@@ -21,7 +21,7 @@ const routers = [
     component:Works
   },
   {
-    path:'/main/essay',
+    path:'/main/essay/:essayId',
     component:Essay
   }
 ]
