@@ -1,6 +1,7 @@
 var settings = require('../setting');
 var Db = require('mongodb').Db;
 var MongoClient = require('mongodb').MongoClient;
+var ObjectId = require('mongodb').ObjectId;
 
 var clientOption = { 
   useUnifiedTopology: true,
@@ -63,8 +64,9 @@ exports.find = function(collectionName,json,callback){
 };
 
 exports.findOne = function(collectionName,json,callback){
+  json._id = ObjectId(json._id);
   _connectDB(function(err,db){
-    db.collection(collectionName).findOne(json.data, (err,result) => {
+    db.collection(collectionName).findOne(json, (err,result) => {
       if(err == null){
         callback(1,result);
       }else{

@@ -8,8 +8,9 @@ import tag from '../../../public/src/images/tag.svg'
 import works from '../../../public/src/images/works.svg'
 import github from '../../../public/src/images/github.svg'
 import more from '../../../public/src/images/more.svg'
+import add from '../../../public/src/images/add.svg'
 
-const navImgs = [essay,tag,works,github];
+const navImgs = [essay, add, tag, works, github];
 
 class Nav extends React.Component {
   constructor(props){
@@ -32,10 +33,10 @@ class Nav extends React.Component {
   }
   render(){
     var navList = nav.map((item,index) =>
-      <Link to={`/main${item.link}`} className="nav_btn" key={index} style={{display:this.state.moreState}}>
+      <a href={`${item.link}`} className="nav_btn" key={index} style={{display:this.state.moreState}}>
         <img src={navImgs[index]} />
         <SmallTag className='nav-tag' tag={item.name} />
-      </Link>
+      </a>
     )
     return (
       <div id="nav">

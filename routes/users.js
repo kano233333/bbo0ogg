@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../db/db');
-
+var ObjectId = require('mongodb').ObjectId;
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
@@ -32,13 +32,13 @@ router.post('/getEssay', function(req, res, next){
 })
 
 router.post('/getEssayDetail', function(req, res, next){
-  console.log(req.body)
   let _body = req.body;
   let _data = {
     _id: _body._id
   };
-  console.log(_data);
-  db.findOne('essay', {}, (static, result) => {
+  console.log(_data)
+  db.findOne('essay', _data, (static, result) => {
+    console.log(result)
     res.send({
       static: static,
       data: result

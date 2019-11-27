@@ -1,22 +1,27 @@
 const nav = [
   {
     name:'文章',
-    link:'/essayTimeList',
+    link:'/main/essayTimeList',
     icon:'essay'
   },
   {
+    name:'新建',
+    link:'/edit',
+    icon:'add'
+  },
+  {
     name:'标签',
-    link:'/essayTagList',
+    link:'/main/essayTagList',
     icon:'tag'
   },
   {
     name:'作品',
-    link:'/works',
+    link:'/main/works',
     icon:'works'
   },
   {
     name:'Github',
-    link:'https://github.com/kano233333',
+    link:'http://github/kano233333',
     icon:'github'
   }
 ]
