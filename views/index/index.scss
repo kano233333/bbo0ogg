@@ -4,4 +4,16 @@
   width: 100vw;
   height: 100vh;
   background-color: $primary;
+  position: relative;
+  .main {
+    height: 200px;
+    text-align: center;
+    font-size: 30px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
 }

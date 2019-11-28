@@ -9,8 +9,10 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-const webpackMiddleware = require('./webpack.middleware');
-webpackMiddleware(app);
+if(process.env.NODE_ENV !== 'production'){
+  const webpackMiddleware = require('./webpack.middleware');
+  webpackMiddleware(app);
+}
 
 // view engine setup
 var ejs = require('ejs');

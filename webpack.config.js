@@ -2,8 +2,9 @@ const webpack = require('webpack');
 const path = require('path');
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const FileManagerPlugin = require("filemanager-webpack-plugin");
 var hotMiddlewareScript = 'webpack-hot-middleware/client';
-  
+
 module.exports = {
   entry: {
     entry: [
@@ -11,10 +12,11 @@ module.exports = {
       './views/App.js'
     ]
   },
-  mode: 'development',
+  mode: process.env.NODE_ENV,
   output: {
-    path: path.resolve(__dirname, './public/dist'),
-    filename: "bundle.js"
+    path: path.resolve(__dirname, './views/dist'),
+    filename: "bundle.js",
+    publicPath: "/dist/"
   },
   resolve: {
     extensions: ['.js', '.jsx','.css']
@@ -50,6 +52,15 @@ module.exports = {
     // new ExtractTextPlugin("./public/dist/stylesheets/main.css")
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new FileManagerPlugin({
+      onEnd: [
+        { 
+          move: [
+            { source: "/", destination: "/" }
+          ]
+        }
+      ]
+    })
   ] 
 }
