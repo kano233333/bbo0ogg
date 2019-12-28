@@ -9,9 +9,18 @@
     border-left: 4px solid #999;
     background-color: rgba(237, 237, 237, 0.5);
     padding: 10px 10px;
+    word-wrap:break-word;
+    font-size: 16px;
   }
   blockquote:hover {
     box-shadow: 0 0 1px rgba(117, 117, 117, 0.8);
+  }
+  pre {
+    word-wrap:break-word;
+    display: block;
+    overflow: auto;
+    font-size: 15px;
+    white-space: pre-wrap;
   }
   hr {
     margin: 15px 0;

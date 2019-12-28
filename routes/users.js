@@ -46,4 +46,8 @@ router.post('/getEssayDetail', function(req, res, next){
   })
 })
 
+router.post('/getTags', function(req, res, next){
+  // db.find('blog','')
+})
+
 module.exports = router;

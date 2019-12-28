@@ -35,10 +35,11 @@ class AxisList extends React.Component {
     }
   }
   render(){
-    var smallTagDom, timeArr = this.props.time.split('-');
-    console.log(timeArr)
+    var smallTagDom, 
+        timeArr = this.props.time.split('-'),
+        tagSm = this.props.year;
     if(this.props.isFirstY=='block'){
-      smallTagDom = <SmallTag className='axis-tag' style={this.state.styleTag} tag={timeArr[0]} />
+      smallTagDom = <SmallTag className='axis-tag' style={this.state.styleTag} tag={tagSm} />
     }
     return (
       <div className='list' ref='list' onClick={this.props.onClick}>
