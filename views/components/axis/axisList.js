@@ -37,7 +37,7 @@ class AxisList extends React.Component {
   render(){
     var smallTagDom, 
         timeArr = this.props.time.split('-'),
-        tagSm = this.props.year;
+        tagSm = this.props.nav;
     if(this.props.isFirstY=='block'){
       smallTagDom = <SmallTag className='axis-tag' style={this.state.styleTag} tag={tagSm} />
     }
@@ -57,11 +57,11 @@ class AxisList extends React.Component {
           </p>
         </div>
         <div className='excerpt'>
-          <p>{this.props.excerpt}</p>
+          <p>{this.props.content.substr(0,30)}</p>
         </div>
         <div className='tag'>
         {
-          this.props.tags.map((value,key)=>{
+          this.props.tag.map((value,key)=>{
             return <span key={key}>{value}</span>
           })
         }

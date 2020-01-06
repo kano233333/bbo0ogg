@@ -20,12 +20,15 @@ class EssayTimeList extends React.Component {
         page: 1
       },
       success: function(res){
+        let essays = {};
         res.data.map((value)=>{
           value.time = reFormatTime(value.time);
-          return value;
+          let tag = value.time.split('-')[0];
+          Array.isArray(essays[tag]) ? {} : essays[tag] = [];
+          essays[tag].push(value);
         })
         _this.setState({
-          essays: res.data,
+          essays: essays,
           loadding: true
         })
       }

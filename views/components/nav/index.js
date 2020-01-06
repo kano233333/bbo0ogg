@@ -16,7 +16,7 @@ class Nav extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      moreState: 'none'
+      moreState: 'block'
     };
     this.shiftMoreNav = this.shiftMoreNav.bind(this);
   }

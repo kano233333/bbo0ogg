@@ -6,23 +6,14 @@ class Axis extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      essays: []
+      essays: {}
     };
   }
   componentDidMount(){
     this.init();
   }
   init(){
-    var essays = [];
-    this.props.essays.map((item)=>{
-      essays.push({
-        _id: item._id,
-        time: item.time,
-        title: item.title,
-        tags: item.tag,
-        excerpt: item.content.substr(0,30)
-      })
-    })
+    var essays = this.props.essays;
     this.setState({
       essays: essays
     })
@@ -31,22 +22,26 @@ class Axis extends React.Component {
     window.location.href = `/main/essay/${_id}`
   }
   render(){
-    var t;
+    var essays = this.state.essays;
+    var essayIndex = Object.keys(essays);
     return (
       <div className='axis'>
         <div className='axis-wrap'>
           {
-            this.state.essays.map((value,key)=>{
-              var props = value;
-              var year = value.time.split('-')[0];
-              if(t==year){
-                props.isFirstY = 'none';
-              }else{
-                props.isFirstY = 'block';
+            essayIndex.map((value,key)=>{
+              if(!Array.isArray(essays[value])){
+                return;
               }
-              props.year = year;
-              t = year;
-              return <AxisList onClick={this.toEssayDetail.bind(this, value._id)} {...props} key={key} />
+              return essays[value].map((item,key2)=>{
+                var props = item;
+                if(key2 == 0){
+                  props.isFirstY = 'block';
+                }else{
+                  props.isFirstY = 'none';
+                }
+                props.nav = value;
+                return <AxisList onClick={this.toEssayDetail.bind(this, item._id)} {...props} key={key2} />
+              })
             })
           }
         </div>

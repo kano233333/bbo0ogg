@@ -23,6 +23,7 @@ class EssayTagList extends React.Component {
           value.time = reFormatTime(value.time);
           return value;
         })
+        console.log(res.data)
         _this.setState({
           essays: res.data,
           loadding: true

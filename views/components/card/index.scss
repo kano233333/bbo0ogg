@@ -1,0 +1,14 @@
+@import '../../../public/src/stylesheets/const';
+
+.card {
+  width: 360px;
+  height: 200px;
+  margin: 30px 30px 60px 30px;
+  background: $blue6;
+  float: left;
+  transition: 1s all;
+  &:hover {
+    // border-radius: 15px;
+    box-shadow: 0 0 15px rgba(107, 152, 172, 0.8);
+  }
+}

@@ -72,7 +72,9 @@ class Edit extends React.Component {
         tag: _this.state.tags
       },
       success: function(res){
-        console.log(res)
+        if(res.static == 1){
+          window.location.href = '/main/essayTimeList'
+        }
       }
     })
   }

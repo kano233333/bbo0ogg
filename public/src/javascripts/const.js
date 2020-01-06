@@ -21,7 +21,7 @@ const nav = [
   },
   {
     name:'Github',
-    link:'http://github/kano233333',
+    link:'https://github.com/kano233333',
     icon:'github'
   }
 ]
