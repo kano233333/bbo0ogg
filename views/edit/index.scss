@@ -1,4 +1,3 @@
-@import '../../public/src/stylesheets/const';
 #container {
   width: 100vw;
   min-height: 100vh;
@@ -86,137 +85,78 @@
   }
 }
 
-.alert {
-  width: 650px;
-  height: 550px;
-  position: fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  background-color: $primary;
-  margin: auto;
-  padding: 25px;
-  box-sizing: border-box;
-  box-shadow: 0 0 15px rgba(255,255,255,0.5);
-  animation: 0.3s block_scale forwards;
-  .cancel {
-    width: 30px;
-    height: 30px;
+.input-wrap {
+  margin: 30px;
+  font-size: 16px;
+  color: #666;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: rgba(175, 228, 247, 0.2);
+  span {
+    display: block;
+  }
+  input {
+    font-size: 18px;
+    border-bottom: 2px solid $info;
     padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    background: url("../../public/src/images/cancel.svg") no-repeat center;
-    background-size: 90%;
-    background-color: #04469b;
-    position: absolute;
-    right:-25px;
-    top:-25px;
-    box-shadow: 0 0 5px #333;
-    // transform: scale(0);
-    // animation: 0.3s block_scale_1 forwards ease 0.3s;
   }
-  .cancel:hover,.sure:hover {
-    transform: scale(1.2);
-    box-shadow: 0 0 15px #6e3303;
-  }
-  .sure {
-    width: 40px;
-    height: 40px;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    background: url("../../public/src/images/sure.svg") no-repeat center;
-    background-size: 80%;
-    background-color: $warning;
-    position: absolute;
-    right:10px;
-    bottom:10px;
-    box-shadow: 0 0 5px #6e3303;
-    // transform: scale(0);
-    // animation: 0.3s block_scale_1 forwards ease 0.5s;
-  }
-  .input-wrap {
-    margin: 30px;
-    font-size: 16px;
-    color: #666;
-    border-radius: 5px;
-    padding: 20px;
-    background-color: rgba(175, 228, 247, 0.2);
-    span {
-      display: block;
-    }
-    input {
-      font-size: 18px;
-      border-bottom: 2px solid $info;
-      padding: 10px;
-    }
-    input:focus {
-      border-bottom: 2px solid $primary;
-    }
-    .add {
-      display:inline-block;
-      width: 40px;
-      height: 40px;
-      background: $primary no-repeat;
-      background-image: url('../../public/src/images/add.svg');
-      background-size: 100%;
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 8px #666;
-      position: relative;
-      top: 10px;
-      margin: 0 20px;
-    }
-  }
-  .tags {
-    margin: 20px;
-    >p {
-      float: left;
-      background-color: $primary;
-      margin: 10px;
-      color: #fff;
-      box-shadow: 0 0 5px #666;
-      border-radius: 5px;
-      padding: 5px 10px;
-      cursor: pointer;
-      position: relative;
-      >span {
-        display: inline-block;
-      }
-      >span:nth-of-type(1) {
-        position: relative;
-      }
-      >span:nth-of-type(2) {
-        position: absolute;
-        right: 3px;
-        font-size: 18px;
-        color: rgba(240, 152, 21, 0.877);
-        transform: scale(0);
-      }
-      >span:nth-of-type(2):hover {
-        color: rgb(247, 151, 7);
-      }
-    }
-    >p:hover {
-      >span:nth-of-type(1) {
-        transform: translateX(-20px);
-      }
-      >span:nth-of-type(2) {
-        transform: scale(1);
-      }
-    }
+  input:focus {
+    border-bottom: 2px solid $primary;
   }
 }
-.alert:before {
-  width: 600px;
-  height: 500px;
-  content: '';
-  position: absolute;
-  top:25px;
-  left:25px;
-  background-color: #fff;
-  box-shadow: 0 0 10px #032c61;
-  z-index: -1;
-  border-radius: 10px;
+
+.add {
+  display: block;
+  float: left;
+  width: 40px;
+  height: 40px;
+  background: $primary no-repeat;
+  background-image: url('../../public/src/images/add.svg');
+  background-size: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px #666;
+  margin: 0 20px;
+}
+.add:hover {
+  transform: scale(1.2);
+}
+.tags {
+  margin: 20px;
+  >p {
+    float: left;
+    background-color: $primary;
+    margin: 10px;
+    color: #fff;
+    box-shadow: 0 0 5px #666;
+    border-radius: 5px;
+    padding: 10px 13px;
+    cursor: pointer;
+    position: relative;
+    >span {
+      display: inline-block;
+    }
+    >span:nth-of-type(1) {
+      position: relative;
+    }
+    >span:nth-of-type(2) {
+      position: absolute;
+      right: 3px;
+      line-height:0.8;
+      font-size: 20px;
+      color: #fff;
+      transform: scale(0);
+    }
+    >span:nth-of-type(2):hover {
+      font-weight: 700;
+    }
+  }
+  >p:hover {
+    >span:nth-of-type(1) {
+      transform: translateX(-15px);
+    }
+    >span:nth-of-type(2) {
+      transform: scale(1);
+    }
+  }
 }

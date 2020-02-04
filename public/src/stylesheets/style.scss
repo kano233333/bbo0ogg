@@ -102,6 +102,9 @@ li, lo {
   padding: 0 5px;
   border-radius: 5px;
 }
+.clear {
+  clear: both;
+}
 
 //animation
 @keyframes block_scale {

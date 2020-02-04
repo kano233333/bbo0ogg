@@ -20,6 +20,7 @@ const defaults = {
 };
 
 let md = new markdown({
+  breaks: true,
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {

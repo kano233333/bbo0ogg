@@ -1,25 +1,28 @@
-@import '../../../public/src/stylesheets/solarized-light';
-
 .md {
   position: relative;
+  color: #555;
   h1,h2,h3,h4,h5,ul,blockquote {
     margin: 15px 0;
+    color: #555;
+  }
+  p,ul {
+    line-height: 1.5;
+    font-size: 15px;
   }
   blockquote {
-    border-left: 4px solid #999;
-    background-color: rgba(237, 237, 237, 0.5);
-    padding: 10px 10px;
+    border-left: 4px solid #619ac3;
+    // background-color: rgba(237, 237, 237, 0.5);
+    padding: 20px 20px;
     word-wrap:break-word;
-    font-size: 16px;
-  }
-  blockquote:hover {
-    box-shadow: 0 0 1px rgba(117, 117, 117, 0.8);
+    font-size: 14px;
+    color: #144a74;
+    box-shadow: 0 0 1px rgba(117, 117, 117, 0.3);
   }
   pre {
     word-wrap:break-word;
     display: block;
     overflow: auto;
-    font-size: 15px;
+    font-size: 14px;
     white-space: pre-wrap;
   }
   hr {
@@ -27,6 +30,23 @@
   }
   li {
     list-style: inside;
+  }
+  strong {
+    color: #144a74;
+  }
+  p>code {
+    background-color: #f8f8f8;
+    padding: 3px 5px;
+    color: #e96900;
+  }
+  a {
+    color: #619ac3;
+    text-decoration: none; 
+    border-bottom: 1px dashed #619ac3;
+  }
+  a:hover {
+    // color: #144a74;
+    border-bottom-color: #144a74;
   }
   .table-of-contents {
     position: absolute;

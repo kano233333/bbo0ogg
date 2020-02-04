@@ -1,0 +1,64 @@
+.alert:before {
+  width: 600px;
+  height: 500px;
+  content: '';
+  position: absolute;
+  top:25px;
+  left:25px;
+  background-color: #fff;
+  box-shadow: 0 0 10px #032c61;
+  z-index: -1;
+  border-radius: 10px;
+}
+
+.alert {
+  width: 650px;
+  height: 550px;
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color: $primary;
+  margin: auto;
+  padding: 25px;
+  box-sizing: border-box;
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+  animation: 0.3s block_scale forwards;
+  .cancel {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: url("../../../public/src/images/cancel.svg") no-repeat center;
+    background-size: 90%;
+    background-color: #04469b;
+    position: absolute;
+    right:-25px;
+    top:-25px;
+    box-shadow: 0 0 5px #333;
+    // transform: scale(0);
+    // animation: 0.3s block_scale_1 forwards ease 0.3s;
+  }
+  .cancel:hover,.sure:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px #6e3303;
+  }
+  .sure {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: url("../../../public/src/images/sure.svg") no-repeat center;
+    background-size: 80%;
+    background-color: $warning;
+    position: absolute;
+    right:10px;
+    bottom:10px;
+    box-shadow: 0 0 5px #6e3303;
+    // transform: scale(0);
+    // animation: 0.3s block_scale_1 forwards ease 0.5s;
+  }
+}

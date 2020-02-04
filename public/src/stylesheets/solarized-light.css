@@ -4,13 +4,13 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 
 */
 pre {
-  background-color: #fdf6e3;
-  padding: 10px;
+  /* background-color: #fdf6e3; */
+  background-color: #f8f8f8;
+  padding: 20px;
   line-height: 1.5;
   margin: 20px 0;
-  box-shadow: 0 0 2px #999;
-  margin: 2px;
-  border-radius: 4px;
+  /* box-shadow: 0 0 2px #999; */
+  /* border-radius: 4px; */
 }
 .hljs {
   display: block;

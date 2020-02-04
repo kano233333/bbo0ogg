@@ -1,6 +1,8 @@
 import React from 'react'
 import './index.scss'
 import Md from '../components/md'
+import Dialog from '../components/dialog'
+import InputBox from '../components/inputBox'
 import { ajax, formatTime } from '../components/common'
 
 const styleTop = {top: '-20px', zIndex:3};
@@ -24,6 +26,7 @@ class Edit extends React.Component {
     this.shiftClear = this.shiftClear.bind(this);
     this.addTag = this.addTag.bind(this);
     this.delTag = this.delTag.bind(this);
+    this.getRef = this.getRef.bind(this);
   }
   shiftAlert(){
     this.setState({
@@ -56,20 +59,22 @@ class Edit extends React.Component {
     })
     this.refs.edit.resetContent(e.target.value)
   }
+  getRef(key, value){
+    this.state[key] = value;
+  }
 
   postEssay(){
-    var _this = this;
-    if(this.refs.title.value == ''){
+    if(!this.state['titleRef'].value){
       return;
     }
     ajax({
       url:'/addEssay',
       method: 'POST',
       data: {
-        title: this.refs.title.value,
-        content: _this.state.content,
+        title: this.state['titleRef'].value,
+        content: this.state.content,
         time: formatTime(new Date),
-        tag: _this.state.tags
+        tag: this.state.tags
       },
       success: function(res){
         if(res.static == 1){
@@ -79,7 +84,7 @@ class Edit extends React.Component {
     })
   }
   addTag(){
-    var val = this.refs.tag.value;
+    var val = this.state['tagRef'].value;
     if(val == ''){
       return;
     }
@@ -87,13 +92,16 @@ class Edit extends React.Component {
     this.setState({
       tags: this.state.tags
     })
-    this.refs.tag.value = '';
+    this.state['tagRef'].value = '';
   }
   delTag(index){
     this.state.tags.splice(index,1);
     this.setState({
       tags: this.state.tags
     })
+  }
+  getRef(key, ref){
+    this.state[key] = ref;
   }
 
   render(){
@@ -124,26 +132,13 @@ class Edit extends React.Component {
           <textarea ref={this.textDom} onChange={this.getInputVal}></textarea>
         </div>
       </div>
-      <div className={this.state.isAlertShow ? 'mask' : 'unshow'}>
-        <div className="alert">
-          <div className="cancel ball-img" onClick={this.shiftAlert}></div>
-          <div className="input-wrap">
-            <span>标题</span>
-            <div>
-              <input ref="title" />
-            </div>
-          </div>
-          <div className="input-wrap">
-            <span>标签</span>
-            <div>
-              <input ref='tag' />
-              <i className="add" onClick={this.addTag}></i>
-            </div>
-          </div>
-          {tags}
-          <div className="sure ball-img" onClick={this.postEssay}></div>
-        </div>
-      </div>
+      <Dialog isAlertShow={this.state.isAlertShow} shiftAlert={this.shiftAlert} postEssay={this.postEssay}>
+        <InputBox title="标题" inputKey="titleRef" getRef={this.getRef}></InputBox>
+        <InputBox title="标签" getRef={this.getRef} inputKey="tagRef">
+          <i className="add" onClick={this.addTag}></i>
+        </InputBox>
+        {tags}
+      </Dialog>
     </div>
     )
   }
