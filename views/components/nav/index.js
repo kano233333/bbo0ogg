@@ -15,8 +15,18 @@ const navImgs = [essay, add, tag, works, github, revise];
 class Nav extends React.Component {
   constructor(props){
     super(props);
+    //------------------------------------
+    let _nav = nav;
+    let paths = window.location.href.split('/');
+    if(paths[paths.length-2] == 'essay'){
+      let i = moreNav['essay'];
+      i.link = i.link + `?id=${paths[paths.length-1]}`
+      _nav.push(i);
+    }
+    //------------------------------------
     this.state = {
-      moreState: 'block'
+      moreState: 'block',
+      nav: _nav
     };
     this.shiftMoreNav = this.shiftMoreNav.bind(this);
   }
@@ -32,18 +42,7 @@ class Nav extends React.Component {
     })
   }
   render(){
-    let _nav = nav;
-    let paths = window.location.href.split('/');
-
-    //------------------------------------
-    if(paths[paths.length-2] == 'essay'){
-      let i = moreNav['essay'];
-      i.link = i.link + `?id=${paths[paths.length-1]}`
-      _nav.push(i);
-    }
-    //------------------------------------
-
-    var navList = _nav.map((item,index) =>
+    var navList = this.state.nav.map((item,index) =>
       <a href={`${item.link}`} className="nav_btn" key={index} style={{display:this.state.moreState}}>
         <img src={navImgs[index]} />
         <SmallTag className='nav-tag' tag={item.name} />

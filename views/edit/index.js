@@ -177,7 +177,7 @@ class Edit extends React.Component {
         <div className="edit-box edit-box-left" style={this.state.styleLeft} onClick={this.clickLeft}>
           <Md ref='edit' className='box' content={this.state.content} />
         </div>
-        <div ref="right" className="edit-box edit-box-right" style={this.state.styleRight} onClick={this.clickRight} onScroll={this.getScrollEvent}>
+        <div className="edit-box edit-box-right" style={this.state.styleRight} onClick={this.clickRight} onScroll={this.getScrollEvent}>
           <textarea ref='textDom' onChange={this.getInputVal}></textarea>
         </div>
       </div>

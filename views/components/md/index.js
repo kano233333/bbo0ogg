@@ -3,7 +3,7 @@ import { default as markdown } from 'markdown-it'
 import * as hljs from 'highlightjs'
 import './index.scss'
 import anchor from 'markdown-it-anchor'
-import toc from 'markdown-it-table-of-contents'
+import emoji from 'markdown-it-emoji'
 
 const slugify = (s) => encodeURIComponent(String(s).trim().toLowerCase().replace(/\s+/g, '-'));
 const defaults = {
@@ -31,6 +31,7 @@ let md = new markdown({
   }
 })
 .use(anchor)
+.use(emoji)
 // .use(toc, {
 //   format: function(header){
 //     return header

@@ -1,3 +1,4 @@
+@import '../../../public/src/stylesheets/solarized-light.css';
 .md {
   position: relative;
   color: #555;
@@ -6,7 +7,7 @@
     color: #555;
   }
   p,ul {
-    line-height: 1.5;
+    line-height: 1.7;
     font-size: 15px;
   }
   blockquote {
@@ -24,8 +25,6 @@
     overflow: auto;
     font-size: 14px;
     white-space: pre-wrap;
-    background-color: #f8f8f8;
-    padding: 20px;
   }
   hr {
     margin: 15px 0;
