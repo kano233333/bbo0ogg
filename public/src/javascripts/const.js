@@ -1,4 +1,4 @@
-const nav = [
+let nav = [
   {
     name:'文章',
     link:'/main/essayTimeList',
@@ -25,6 +25,14 @@ const nav = [
     icon:'github'
   }
 ]
+
+const moreNav = {
+  essay: {
+    name: '修改',
+    link: '/edit',
+    icon: 'revise'
+  }
+}
 
 const monthData = [
   {
@@ -112,4 +120,4 @@ const monthData = [
     font_color:'#333'
   }
 ]
-export { nav, monthData }
+export { nav, monthData, moreNav }

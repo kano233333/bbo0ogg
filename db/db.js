@@ -76,3 +76,19 @@ exports.findOne = function(collectionName,json,callback){
     });
   })
 };
+
+exports.update = function(collectionName, json, callback){
+  json._id = ObjectId(json._id);
+  _connectDB(function(err,db){
+    db.collection(collectionName).update( { _id: json._id }, {
+      "$set": json
+    }, (err,result) => {
+      if(err == null){
+        callback(1,result);
+      }else{
+        callback(0,result);
+      }
+      db.close();
+    });
+  })
+}

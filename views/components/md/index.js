@@ -60,9 +60,14 @@ class Md extends React.Component {
       content:md.render(content)
     })
   }
+  scrollTo(r){
+    // console.log(rate)
+    let t = this.refs.box;
+    t.scrollTop = r * (t.scrollHeight - t.offsetHeight);
+  }
   render(){
     return (
-      <div className={`${this.props.className} md`} dangerouslySetInnerHTML={{__html: this.state.content}}></div>
+      <div ref="box" className={`${this.props.className} md`} dangerouslySetInnerHTML={{__html: this.state.content}}></div>
     )
   }
 }

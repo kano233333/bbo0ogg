@@ -9,20 +9,33 @@ router.get('/', function(req, res, next) {
 
 router.post('/addEssay', function(req, res, next){
   let _body = req.body;
-  db.insertOne('essay', _body, (static, result) => {
-    res.send({static:static})
-  })
+  let o = {
+    title: _body.title,
+    tag: _body.tag,
+    content: _body.content,
+  };
+  if( _body.type == 'add' ){
+    o.time = _body.time;
+    db.insertOne('essay', o, (static, result) => {
+      res.send({ static: static })
+    })
+  }else if( _body.type == 'revice' ){
+    o._id = _body._id;
+    db.update('essay', _body, (static, result) => {
+      res.send({ static: static })
+    })
+  } else {
+    res.send({ static: 0 })
+  }
 });
 
 router.post('/getEssay', function(req, res, next){
-  console.log(req.body)
   let _body = req.body;
   let _data = {
     data: {},
     skip: 20 * (_body.page - 1),
     limit: 20
   };
-  console.log(_data);
   db.find('essay', _data, (static, result) => {
     res.send({
       static: static,
@@ -36,9 +49,7 @@ router.post('/getEssayDetail', function(req, res, next){
   let _data = {
     _id: _body._id
   };
-  console.log(_data)
   db.findOne('essay', _data, (static, result) => {
-    console.log(result)
     res.send({
       static: static,
       data: result
