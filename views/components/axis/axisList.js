@@ -1,16 +1,15 @@
 import React from 'react'
 import SmallTag from '../smallTag'
-import { MonthDom, ColorUnderline } from '../common/index'
+import { MonthDom, ColorUnderline, reFormatTime } from '../common/index'
 
 const fixedD = {
-  position: 'fixed',
   top: '20px',
-  left:'33px'
+  right: '85.6%',
+  position: 'fixed'
 }
 class AxisList extends React.Component {
   constructor(props){
     super(props)
-    console.log(props)
     this.state ={ 
       props,
       styleTag: {}
@@ -34,9 +33,13 @@ class AxisList extends React.Component {
       })
     }
   }
+  jumpTag(id, e){
+    e.stopPropagation()
+    window.location.href = `/main/essayTagList#${id}`
+  }
   render(){
     var smallTagDom, 
-        timeArr = this.props.time.split('-'),
+        timeArr = reFormatTime(this.props.time).split('-'),
         tagSm = this.props.nav;
     if(this.props.isFirstY=='block'){
       smallTagDom = <SmallTag className='axis-tag' style={this.state.styleTag} tag={tagSm} />
@@ -53,7 +56,7 @@ class AxisList extends React.Component {
           </div>
           <p>
             <MonthDom month={timeArr[1]} />
-            <span className='time'>{this.props.time}</span>
+            <span className='time'>{reFormatTime(this.props.time)}</span>
           </p>
         </div>
         <div className='excerpt'>
@@ -62,7 +65,7 @@ class AxisList extends React.Component {
         <div className='tag'>
         {
           this.props.tag.map((value,key)=>{
-            return <span key={key}>{value}</span>
+            return <span onClick={this.jumpTag.bind(this, value)} key={key}>{value}</span>
           })
         }
         </div>

@@ -50,7 +50,6 @@ let md = new markdown({
 class Md extends React.Component {
   constructor(props){
     super(props)
-    // console.log(props)
     var content = `${props.content}`
     this.state = {
       content: md.render(content)
@@ -62,7 +61,6 @@ class Md extends React.Component {
     })
   }
   scrollTo(r){
-    // console.log(rate)
     let t = this.refs.box;
     t.scrollTop = r * (t.scrollHeight - t.offsetHeight);
   }

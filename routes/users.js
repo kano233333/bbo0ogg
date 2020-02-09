@@ -21,7 +21,7 @@ router.post('/addEssay', function(req, res, next){
     })
   }else if( _body.type == 'revice' ){
     o._id = _body._id;
-    db.update('essay', _body, (static, result) => {
+    db.update('essay', o, (static, result) => {
       res.send({ static: static })
     })
   } else {
@@ -50,6 +50,22 @@ router.post('/getEssayDetail', function(req, res, next){
     _id: _body._id
   };
   db.findOne('essay', _data, (static, result) => {
+    res.send({
+      static: static,
+      data: result
+    })
+  })
+})
+
+router.post('/getEssayTag', function(req, res, next){
+  let _body = req.body;
+  let _data = {
+    data: {},
+    skip: 20 * (_body.page - 1),
+    limit: 20,
+    field: 'tag'
+  }
+  db.findTagArr('essay', _data, (static, result) => {
     res.send({
       static: static,
       data: result

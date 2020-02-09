@@ -1,5 +1,5 @@
 .axis {
-  padding: 20px 20px 20px 100px;
+  padding: 20px 1% 20px 15%;
   box-sizing: border-box;
   position: relative;
   .axis-wrap {
@@ -14,6 +14,7 @@
     font-size: 14px;
     letter-spacing: 1px;
     cursor: pointer;
+    position: relative;
     .list-head {
       h2 {
         font-size: 18px;
@@ -40,7 +41,7 @@
       overflow: hidden;
     }
     .axis-tag {
-      left: 18px;
+      right: 105%;
       animation: 1s enter_left forwards;
     }
     .underline {

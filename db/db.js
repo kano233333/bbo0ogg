@@ -91,4 +91,30 @@ exports.update = function(collectionName, json, callback){
       db.close();
     });
   })
-}
+};
+
+exports.findTagArr = function(collectionName, json, callback){
+  _connectDB(function(err, db){
+    db.collection(collectionName).distinct(json.field, (err, result) => {
+      if(err == null){
+        let tagArr = result;
+        let res = {};
+        tagArr.forEach((item, index)=>{
+          db.collection(collectionName).find({tag: item}).toArray((err2, tagEssay) => {
+            if(err2 == null){
+              res[item] = tagEssay;
+              if(index == tagArr.length-1){
+                callback(1, res);
+              }
+            }else{
+              callback(0, {err: 'error'})
+            }
+          })
+        })
+      }else{
+        callback(0, {err: 'error'});
+      }
+      db.close();
+    })
+  })
+};

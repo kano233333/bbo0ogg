@@ -35,7 +35,7 @@
   strong {
     color: #144a74;
   }
-  p>code {
+  p>code, li>code {
     background-color: #f8f8f8;
     padding: 3px 5px;
     color: #e96900;
@@ -48,6 +48,23 @@
   a:hover {
     // color: #144a74;
     border-bottom-color: #144a74;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    td, th {
+      border: 1px solid #96c3e2;
+      padding: 3px 15px;
+      text-align: center;
+      font-size: 15px;
+    }
+    th {
+      background-color: #619ac3;
+      color: #fff;
+    }
+    tbody>tr:nth-of-type(even){
+      background-color: #eef6fc;
+    }
   }
   .table-of-contents {
     position: absolute;
