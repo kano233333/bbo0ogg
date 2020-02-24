@@ -27,12 +27,15 @@ class EssayTimeList extends React.Component {
         page: this.state.page
       },
       success: function(res){
+        console.log(res)
         let essays = _this.state.essays;
         res.data.map((value)=>{
-          let tag = reFormatTime(value.time).split('-')[0];
-          Array.isArray(essays[tag]) ? {} : essays[tag] = [];
+          // 当tag是数字/纯数字字符串 ===> essays变为伪数组 ===> 年份会从小到达排列
+          let tag = ' ' + reFormatTime(value.time).split('-')[0];
+          Array.isArray(essays[tag] ? {} : essays[tag] = []);
           essays[tag].push(value);
         })
+        console.log(essays)
         _this.setState({
           essays: essays,
           loadding: true
