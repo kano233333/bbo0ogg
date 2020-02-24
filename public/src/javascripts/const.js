@@ -18,11 +18,31 @@ let nav = [
     name:'作品',
     link:'/main/works',
     icon:'works'
+  }
+]
+
+const homeNav = [
+  {
+    name: 'Github',
+    link: 'https://github.com/kano233333',
+    icon: 'github'
   },
   {
-    name:'Github',
-    link:'https://github.com/kano233333',
-    icon:'github'
+    name: 'blog',
+    link: '/main/essayTimeList',
+    icon: 'blog'
+  },
+  {
+    name: 'qq',
+    link: '',
+    icon: 'qq',
+    code: 'http://47.100.243.94:3011/uploads/1582521859516.jpg'
+  },
+  {
+    name: 'email',
+    link: '',
+    icon: 'email',
+    code: 'http://47.100.243.94:3011/uploads/1582522074984.png'
   }
 ]
 
@@ -120,4 +140,4 @@ const monthData = [
     font_color:'#333'
   }
 ]
-export { nav, monthData, moreNav }
+export { nav, monthData, moreNav, homeNav }

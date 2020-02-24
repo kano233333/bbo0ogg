@@ -8,19 +8,26 @@ class EssayTimeList extends React.Component {
     super(props)
     this.state = {
       essays: [],
-      loadding: false
+      loadding: false,
+      page: 1
     }
+    this.handleScroll = this.handleScroll.bind(this)
+    this.getList = this.getList.bind(this)
   }
   componentDidMount(){
+    window.addEventListener('scroll', this.handleScroll)
+    this.getList();
+  }
+  getList(){
     let _this = this;
     ajax({
       url: '/getEssay',
       method: 'POST',
       data: {
-        page: 1
+        page: this.state.page
       },
       success: function(res){
-        let essays = {};
+        let essays = _this.state.essays;
         res.data.map((value)=>{
           let tag = reFormatTime(value.time).split('-')[0];
           Array.isArray(essays[tag]) ? {} : essays[tag] = [];
@@ -32,6 +39,14 @@ class EssayTimeList extends React.Component {
         })
       }
     })
+  }
+  handleScroll(e){
+    let h1 = document.documentElement.scrollTop + document.documentElement.clientHeight;
+    let h2 = document.documentElement.scrollHeight;
+    if(h2 - h1 < 30){
+      this.state.page++;
+      this.getList();
+    }
   }
   render(){
     let main;

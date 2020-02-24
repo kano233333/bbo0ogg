@@ -34,7 +34,8 @@ router.post('/getEssay', function(req, res, next){
   let _data = {
     data: {},
     skip: 20 * (_body.page - 1),
-    limit: 20
+    limit: 20,
+    sort: { time: -1 }
   };
   db.find('essay', _data, (static, result) => {
     res.send({
