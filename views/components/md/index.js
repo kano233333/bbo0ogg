@@ -21,6 +21,7 @@ const defaults = {
 
 let md = new markdown({
   breaks: true,
+  html: true,
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
@@ -44,7 +45,7 @@ let md = new markdown({
 //   containerFooterHtml: `<div class="footer">Footer</div>`, 
 // })
 .use((md) => {
-  console.log(md.block.ruler)
+  // console.log(md.block.ruler)
 })
 
 class Md extends React.Component {

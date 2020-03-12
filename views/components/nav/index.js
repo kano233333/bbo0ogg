@@ -10,7 +10,7 @@ import more from '../../../public/src/images/more.svg'
 import add from '../../../public/src/images/add.svg'
 import revise from '../../../public/src/images/revise.svg'
 
-const navImgs = [essay, add, tag, works, github, revise];
+const navImgs = [essay, add, tag, works, revise];
 
 class Nav extends React.Component {
   constructor(props){
