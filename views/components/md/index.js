@@ -4,61 +4,67 @@ import * as hljs from 'highlightjs'
 import './index.scss'
 import anchor from 'markdown-it-anchor'
 import emoji from 'markdown-it-emoji'
+import { Watcher } from '../common'
 
-const slugify = (s) => encodeURIComponent(String(s).trim().toLowerCase().replace(/\s+/g, '-'));
-const defaults = {
-  includeLevel: [ 1, 2 ],
-  containerClass: 'table-of-contents',
-  slugify,
-  markerPattern: /^\[\[toc\]\]/im,
-  listType: 'ul',
-  format: undefined,
-  forceFullToc: false,
-  containerHeaderHtml: undefined,
-  containerFooterHtml: undefined,
-  transformLink: undefined,
-};
-
-let md = new markdown({
-  breaks: true,
-  html: true,
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(lang, str).value;
-      } catch (__) {}
-    }
-    return '';
-  }
-})
-.use(anchor)
-.use(emoji)
-// .use(toc, {
-//   format: function(header){
-//     return header
-//   },
-//   transformLink:function(link){
-//     return '';
-//   },
-//   // slugify,
-//   containerHeaderHtml: `<div class="header">Contents</div>`,
-//   containerFooterHtml: `<div class="footer">Footer</div>`, 
-// })
-.use((md) => {
-  // console.log(md.block.ruler)
+let wt = new Watcher();
+wt.addSub('arr', []);
+wt.addEvent('arr', function(val){
+  console.log(val)
 })
 
 class Md extends React.Component {
   constructor(props){
     super(props)
-    var content = `${props.content}`
+    let _this = this
+    let getTitle = props.getTitle || function(){}
+
+    /*
+     * markdown 加了一个use提取出标题
+     * Watcher 发布订阅模式，对提取出的标题进行监听
+     */
+    let wt = new Watcher()
+    wt.addSub('titleArr', [])
+    wt.addEvent('titleArr', function(val){
+      getTitle(val)
+    })
+    this.wt = wt
+
+    this.md = new markdown({
+      breaks: true,
+      html: true,
+      highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return hljs.highlight(lang, str).value;
+          } catch (__) {}
+        }
+        return '';
+      }
+    })
+    .use(anchor)
+    .use(emoji)
+    .use((plugin) => {
+      // 提取标题，再次吹爆markdown-it
+      plugin.core.ruler.push('getHeads', function(md){
+        let tokens = md.tokens;
+        let arr = [];
+        for(let i = 0; i < tokens.length ; i++) {
+          if(tokens[i].type == 'heading_open') {
+            arr.push(tokens[i++].tag + ':' + tokens[i++].content)
+          }
+        }
+        _this.wt.setSub('titleArr', arr);
+      })
+    })
+
+    let content = `${props.content}`
     this.state = {
-      content: md.render(content)
+      content: this.md.render(content),
     }
   }
   resetContent(content){
     this.setState({
-      content:md.render(content)
+      content: this.md.render(content)
     })
   }
   scrollTo(r){

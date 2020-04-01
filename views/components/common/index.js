@@ -95,4 +95,23 @@ const reFormatTime = time => {
   return a.slice(0,3).join('-') + " " +a.slice(3,6).join(':');
 }
 
-export { MonthDom, ColorUnderline, ajax, formatTime, reFormatTime }
+function Watcher() {
+  this.subs = {};
+  this.events = {};
+}
+Watcher.prototype.addSub = function(sub, val) {
+  this.subs[sub] = val;
+}
+
+Watcher.prototype.addEvent = function(sub, event) {
+  this.events[sub] === undefined ? this.events[sub] = [event] : this.events[sub].push(event);
+}
+
+Watcher.prototype.setSub = function(sub, val) {
+  this.subs[sub] = val;
+  for(let i = 0; i < this.events[sub].length; i++) {
+    this.events[sub][i](val);
+  }
+}
+
+export { MonthDom, ColorUnderline, ajax, formatTime, reFormatTime, Watcher }
