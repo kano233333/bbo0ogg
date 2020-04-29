@@ -69,4 +69,16 @@
     color: #333;
     line-height: 2;
   }
+  .sticky {
+    position: sticky;
+    top: 0;
+    left: 300px;
+  }
+  .comment-wrap {
+    width:70%;
+    margin: 10px 24%;
+    padding: 35px 0;
+    box-sizing: border-box;
+    border-top: 1px dashed #333;
+  }
 }

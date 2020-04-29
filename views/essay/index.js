@@ -1,5 +1,6 @@
 import React from 'react'
 import Md from '../components/md'
+import Comment from '../components/comment'
 import { MonthDom, ajax, reFormatTime } from '../components/common'
 import './index.scss'
 
@@ -70,6 +71,8 @@ class Essay extends React.Component {
             </p>
             <Md className='content-d' content={essay.content} getTitle={this.getTitle} />
           </div>
+          <div className='sticky'>评论</div>
+          <Comment></Comment>
         </div>
       );
     }else{

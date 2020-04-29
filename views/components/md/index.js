@@ -45,6 +45,7 @@ class Md extends React.Component {
     .use(emoji)
     .use((plugin) => {
       // 提取标题，再次吹爆markdown-it
+      // console.log(plugin.core)
       plugin.core.ruler.push('getHeads', function(md){
         let tokens = md.tokens;
         let arr = [];
