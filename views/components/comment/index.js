@@ -5,37 +5,37 @@ import './index.scss'
 class Comment extends React.Component {
   constructor(props){
     super(props)
-    this.init = this.init.bind(this)
     this.pushComment = this.pushComment.bind(this)
     this.state = {
-      comments: []
+      comments: props.comment.reverse()
     }
   }
-  componentDidMount(){
-    this.init()
-  }
-  init() {
+
+  pushComment() {
+    if(this.refs.inputComment.value == '') return;
+
+    let obj = {
+      _id: this.props.essayId,
+      comment: this.refs.inputComment.value,
+      name: this.refs.inputName.value || '壮士不留名',
+      time: formatTime(new Date)
+    }
+
     ajax({
-      url: '/getComments',
-      data: {
-        _id: this.props.essayId
-      },
+      url: '/pushComment',
+      data: obj,
       method: 'POST',
       success: (res) => {
-        this.setState({
-          comments: res.data
-        })
+        console.log(res)
+        if(res.static == 1) {
+          this.state.comments.unshift(obj)
+          this.setState({
+            comments: this.state.comments
+          })
+          this.refs.inputComment.value = ''
+          this.refs.inputName.value = ''
+        }
       }
-    })
-  }
-  pushComment() {
-    this.state.comments.unshift({
-      comment: this.refs.inputComment.value,
-      name: this.refs.inputName.value,
-      time: formatTime(new Date)
-    })
-    this.setState({
-      comments: this.state.comments
     })
   }
   render() {
@@ -45,7 +45,7 @@ class Comment extends React.Component {
         <div className='push-wrap'>
           <textarea ref='inputComment'></textarea>
           <div className='push'>
-            <input ref='inputName' />
+            <input placeholder='壮士留名' ref='inputName' />
             <button onClick={this.pushComment}></button>
           </div>
         </div>

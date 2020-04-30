@@ -21,7 +21,7 @@ router.post('/addEssay', function(req, res, next){
     })
   }else if( _body.type == 'revice' ){
     o._id = _body._id;
-    db.update('essay', o, (static, result) => {
+    db.update('essay', '$set', o, (static, result) => {
       res.send({ static: static })
     })
   } else {
@@ -74,8 +74,22 @@ router.post('/getEssayTag', function(req, res, next){
   })
 })
 
-router.post('/getTags', function(req, res, next){
-  // db.find('blog','')
+router.post('/pushComment', function(req, res, next){
+  let _body = req.body;
+  let _data = {
+    _id: _body._id,
+    comment: {
+      name: _body.name,
+      comment: _body.comment,
+      time: _body.time
+    }
+  }
+  db.update('essay', '$push', _data, (static, result) => {
+    res.send({
+      static: static,
+      data: result
+    })
+  })
 })
 
 module.exports = router;
