@@ -71,8 +71,7 @@ class Essay extends React.Component {
             </p>
             <Md className='content-d' content={essay.content} getTitle={this.getTitle} />
           </div>
-          <div className='sticky'>评论</div>
-          <Comment></Comment>
+          <Comment essayId={ this.state.essayId }></Comment>
         </div>
       );
     }else{
