@@ -29,3 +29,8 @@
 > - 蓝
 >
 >   鷃蓝（#144a74）海涛蓝（#15559a）景泰蓝（#2775b6）鸢尾蓝（#158bb8）秋波蓝（#8abcd1）涧石蓝（#66a9c9）
+
+## 一些优化
+- 使用http2
+- webpack splitChunks拆分代码进行分包
+- highlightjs打包后体积太大了，https://highlightjs.org/download/ 按需下载代码

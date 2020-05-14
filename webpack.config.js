@@ -7,15 +7,13 @@ var hotMiddlewareScript = 'webpack-hot-middleware/client';
 
 module.exports = {
   entry: {
-    entry: [
-      // hotMiddlewareScript,
-      './views/App.js'
-    ]
+    index: ['./views/App.js']
   },
   mode: process.env.NODE_ENV,
   output: {
     path: path.resolve(__dirname, './views/dist'),
     filename: "bundle.js",
+    chunkFilename: "[name].js",
     publicPath: "/"
   },
   resolve: {
@@ -48,6 +46,45 @@ module.exports = {
       }
     ]
   },
+
+  /*
+   * splitChunks 拆分代码
+   *    - node_modules
+   *    - react
+   *    - markdown
+   *    - highlight
+   */
+  optimization: {
+    splitChunks: {
+      chunks: 'all', 
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors'
+        },
+        'react-vendor': {
+          test: (module, chunks) => /react/.test(module.context),
+          priority: 1,
+          name:'react-vendor'
+        },
+        'markdown-vendor': {
+          test: (module, chunks) => /markdown|highlight/.test(module.context),
+          priority: 2,
+          name:'markdown-vendor'
+        },
+        // 'highlight-vendor': {
+        //   test: (module, chunks) => /highlight/.test(module.context),
+        //   priority: 2,
+        //   name:'highlight-vendor'
+        // }
+      }
+    }
+  },
   plugins: [
     new htmlWebpackPlugin({
       filename: "index.html",
@@ -57,8 +94,7 @@ module.exports = {
     // new ExtractTextPlugin("./public/dist/stylesheets/main.css")
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    // new FileManagerPlugin({
+    new webpack.NoEmitOnErrorsPlugin()
     //   onEnd: [
     //     { 
     //       move: [
