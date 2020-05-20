@@ -42,6 +42,9 @@ class Index extends React.Component {
           }) }
         </div>
       </div>
+      <div className='icp'>
+        <a href='http://www.beian.miit.gov.cn' target='_blank'>渝ICP备20000448号-1</a>
+      </div>
     </div>)
   }
 }

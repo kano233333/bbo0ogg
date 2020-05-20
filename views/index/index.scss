@@ -70,6 +70,17 @@
       }
     }
   }
+  .icp {
+    position: absolute;
+    bottom: 20px;
+    a {
+      color: rgb(226, 226, 226);
+      font-size: 13px;
+    }
+    a:hover {
+      color: #fff;
+    }
+  }
 }
 
 .clearfix:after {

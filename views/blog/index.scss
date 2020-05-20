@@ -1,5 +1,5 @@
 .list_wrap {
-  padding: 15px;
+  padding: 15px 15px 0 15px;
   box-sizing: border-box;
   -ms-overflow-style:none;
 }
@@ -7,8 +7,20 @@
   width: 100%;
   background-color:#fff;
   box-shadow: 0 0 5px $main-deep;
-  min-height: calc(100vh - #{30px});
+  min-height: calc(100vh - #{50px});
 }
 ::-webkit-scrollbar{
   display:none;
+}
+
+.icp {
+  padding: 7px 0;
+  text-align: center;
+  a {
+    color: rgb(226, 226, 226);
+    font-size: 13px;
+  }
+  a:hover {
+    color: #fff;
+  }
 }

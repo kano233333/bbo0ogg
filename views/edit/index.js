@@ -188,6 +188,10 @@ class Edit extends React.Component {
         </InputBox>
         {tags}
       </Dialog>
+
+      <div className='icp'>
+        <a href='http://www.beian.miit.gov.cn' target='_blank'>渝ICP备20000448号-1</a>
+      </div>
     </div>
     )
   }
