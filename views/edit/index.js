@@ -182,7 +182,7 @@ class Edit extends React.Component {
         </div>
       </div>
       <Dialog isAlertShow={this.state.isAlertShow} shiftAlert={this.shiftAlert} postEssay={this.postEssay}>
-        <InputBox title="标题" inputKey="titleRef" getRef={this.getRef}></InputBox>
+        <InputBox title="标题" inputKey="titleRef" getRef={this.getRef} autofocus></InputBox>
         <InputBox title="标签" getRef={this.getRef} inputKey="tagRef">
           <i className="add" onClick={this.addTag}></i>
         </InputBox>

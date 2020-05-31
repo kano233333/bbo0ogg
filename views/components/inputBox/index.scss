@@ -1,8 +1,12 @@
 .input-box {
-  margin: 30px;
+  margin: 50px 30px 30px;
+  position: relative;
   p {
     color: $borderColor1;
     font-size: 15px;
+    position: absolute;
+    top: 12px;
+    left: 10px;
   }
   input[type=text]{
     display: block;
@@ -13,8 +17,15 @@
     font-size: 17px;
     border-radius: 10px;
     padding: 10px;
+    background-color: #fff;
+    z-index: 3;
+    position: relative;
   }
   input[type=text]:focus {
     border-color: $borderColor1;
+  }
+
+  input[type=text]:focus + p {
+    transform: translateY(-35px);
   }
 }

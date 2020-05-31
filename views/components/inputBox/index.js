@@ -4,13 +4,13 @@ class InputBox extends React.Component {
   componentDidMount(){
     if(this.props.getRef){
       this.props.getRef(this.props.inputKey, this.refs.inputRef); 
-    }
+    } 
   }
   render(){
     return (
       <div className="input-box">
-        <p>{ this.props.title }</p>
         <input type="text" ref="inputRef" />
+        <p>{ this.props.title }</p>
         { this.props.children }
         <br className="clear" />
       </div>

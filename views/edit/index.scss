@@ -133,6 +133,7 @@
     padding: 10px 13px;
     cursor: pointer;
     position: relative;
+    animation: 0.3s block_scale  forwards;
     >span {
       display: inline-block;
     }
