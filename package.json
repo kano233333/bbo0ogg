@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development supervisor -w routes,app.js node ./bin/www",
+    "dev": "supervisor ./bin/www",
     "build": "webpack --mode production",
     "start": "NODE_ENV=production node ./bin/www"
   },

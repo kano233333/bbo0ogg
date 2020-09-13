@@ -20,6 +20,7 @@
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    transition: 0.3s all;
   }
   >i:hover {
     background-size: 90%;
@@ -99,6 +100,7 @@
     font-size: 18px;
     border-bottom: 2px solid $info;
     padding: 10px;
+    transition: 0.3s all;
   }
   input:focus {
     border-bottom: 2px solid $primary;
@@ -117,6 +119,7 @@
   cursor: pointer;
   box-shadow: 0 0 8px #666;
   margin: 0 20px;
+  transition: 0.3s all;
 }
 .add:hover {
   transform: scale(1.2);
@@ -133,9 +136,11 @@
     padding: 10px 13px;
     cursor: pointer;
     position: relative;
+    transition: 0.3s all;
     animation: 0.3s block_scale  forwards;
     >span {
       display: inline-block;
+      transition: 0.3s all;
     }
     >span:nth-of-type(1) {
       position: relative;

@@ -51,7 +51,6 @@ class Essay extends React.Component {
       main = (
         <div>
           <div className='catalog'>
-            <p>------------------------------------------</p>
             {
               titles.map((title, key) => {
                 let sp = title.split(':')

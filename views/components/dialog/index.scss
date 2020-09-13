@@ -38,6 +38,7 @@
     right:-25px;
     top:-25px;
     box-shadow: 0 0 5px #333;
+    transition: 0.3s all;
     // transform: scale(0);
     // animation: 0.3s block_scale_1 forwards ease 0.3s;
   }
@@ -58,6 +59,7 @@
     right:10px;
     bottom:10px;
     box-shadow: 0 0 5px #6e3303;
+    transition: 0.3s all;
     // transform: scale(0);
     // animation: 0.3s block_scale_1 forwards ease 0.5s;
   }

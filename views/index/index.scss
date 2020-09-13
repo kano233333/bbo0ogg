@@ -28,7 +28,7 @@
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        background: url(http://47.100.243.94:3011/uploads/1582514515562.gif) no-repeat;
+        background: url(http://47.100.243.94:3011/uploads/1600000863586.jpg) no-repeat;
         box-shadow: 2px 2px 8px #04469b;
         background-size: 100%;
       }
@@ -47,6 +47,7 @@
       img {
         width: 100%;
         height: 100%;
+        transition: 0.3s transform;
       }
     }
     .er-code {

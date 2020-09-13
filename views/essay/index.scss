@@ -15,6 +15,7 @@
       cursor: pointer;
       color: $gray3;
       border-bottom: 1px dashed $gray5;
+      transition: 0.3s all;
     }
     a[data-head=h1] {
       margin-left: 0;

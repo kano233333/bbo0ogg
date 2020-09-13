@@ -19,7 +19,6 @@ class Index extends React.Component {
   }
 
   linkTo(link){
-    console.log(link)
     if(link!=='' && link!==undefined){
       window.location.href = link;
     }
