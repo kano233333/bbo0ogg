@@ -9,7 +9,7 @@
     left: 10px;
     transition: 0.3s all;
   }
-  input[type=text]{
+  input{
     display: block;
     float: left;
     width: 300px;
@@ -23,11 +23,11 @@
     position: relative;
     transition: 0.3s all;
   }
-  input[type=text]:focus {
+  input:focus {
     border-color: $borderColor1;
   }
 
-  input[type=text]:focus + p {
+  input:focus + p {
     transform: translateY(-35px);
   }
 }

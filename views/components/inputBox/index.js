@@ -5,11 +5,12 @@ class InputBox extends React.Component {
     if(this.props.getRef){
       this.props.getRef(this.props.inputKey, this.refs.inputRef); 
     } 
+    this.props.type = this.props.type || 'text';
   }
   render(){
     return (
       <div className="input-box">
-        <input type="text" ref="inputRef" />
+        <input type={this.props.type} placeholder={this.props.placeholder || ''} ref="inputRef" />
         <p>{ this.props.title }</p>
         { this.props.children }
         <br className="clear" />

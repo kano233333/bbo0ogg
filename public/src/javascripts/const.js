@@ -47,11 +47,21 @@ const homeNav = [
 ]
 
 const moreNav = {
-  essay: {
-    name: '修改',
-    link: '/edit',
-    icon: 'revise'
-  }
+  essay: [
+    {
+      name: '修改',
+      link: '/edit',
+      icon: 'revise'
+    },
+    {
+      name: '删除',
+      icon: 'cut',
+      action: {
+        type: 'Confirm',
+        text: '默默打出个？确定了🏇'
+      }
+    }
+  ]
 }
 
 const monthData = [

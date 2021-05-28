@@ -10,17 +10,15 @@
   z-index: -1;
   border-radius: 10px;
 }
-
+.mask.fixed-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .alert {
   width: 650px;
   height: 550px;
-  position: fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
   background-color: $primary;
-  margin: auto;
   padding: 25px;
   box-sizing: border-box;
   box-shadow: 0 0 15px rgba(255,255,255,0.5);
@@ -62,5 +60,19 @@
     transition: 0.3s all;
     // transform: scale(0);
     // animation: 0.3s block_scale_1 forwards ease 0.5s;
+  }
+}
+
+.confirm {
+  width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border: 15px solid #409EFF;
+}
+.confirm-main {
+  p {
+    text-align: center;
+    font-size: 16px;
+    color: #333;
   }
 }

@@ -11,7 +11,7 @@ module.exports = {
   },
   mode: process.env.NODE_ENV,
   output: {
-    path: path.resolve(__dirname, './views/dist'),
+    path: path.resolve(__dirname, './public/dist'),
     filename: "bundle.js",
     chunkFilename: "[name].js",
     publicPath: "/"
