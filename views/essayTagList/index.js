@@ -10,7 +10,7 @@ class EssayTagList extends React.Component {
       loadding: false
     }
   }
-  componentDidMount(){
+  componentDidMount() {
     let _this = this;
     ajax({
       url: '/getEssayTag',
@@ -19,12 +19,12 @@ class EssayTagList extends React.Component {
         page: 1
       },
       success: function(res){
-        let _data = res.data;
-        if(res.static == 1){
+        let _data = res.result;
+        if (res.state === 1) {
           _this.setState({
             essays: _data,
             loadding: true
-          }, ()=>{
+          }, () => {
             /*
              * 搞死人的锚点 ->_->
              * 路由不同，直接跳(url + 锚点)不行 ===> 手动滚

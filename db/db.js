@@ -18,18 +18,17 @@ function _connectDB(callback) {
   });
 }
 
-exports.insertOne = function(collectionName,json,callback){
-  _connectDB(function(err,db){
-    console.log(db);
-    if(err){
+exports.insertOne = (collectionName, json, callback) => {
+  _connectDB((err, db) => {
+    if (err) {
       return;
     }
-    db.collection(collectionName).insertOne(json,function(err,result){
-      var static = !err && result.result.ok==1 ? 1 : -1;
-      callback(static,result);
+    db.collection(collectionName).insertOne(json, (err, result) => {
+      var state = (!err && result.result.ok === 1) ? 1 : -1;
+      callback(state, result);
       db.close();
-    })
-  })
+    });
+  });
 };
 
 exports.insertMany = function(collectionName,json,callback){
@@ -41,13 +40,14 @@ exports.insertMany = function(collectionName,json,callback){
   })
 };
 
-exports.deleteMany = function(collectionName,json,callback){
-  _connectDB(function(err,db){
-    db.collection(collectionName).deleteMany(json,function(err,result){
+exports.deleteMany = (collectionName, json, callback) => {
+  json._id = ObjectId(json._id);
+  _connectDB((err, db) => {
+    db.collection(collectionName).deleteMany(json, (err,result) => {
       callback(err,result);
       db.close();
     })
-  })
+  });
 };
 
 exports.find = function(collectionName,json,callback){
@@ -79,9 +79,8 @@ exports.findOne = function(collectionName,json,callback){
 
 exports.update = function(collectionName, type , json, callback){
   let _id = ObjectId(json._id);
-  delete json._id
-  console.log(_id)
-  _connectDB(function(err,db){
+  delete json._id;
+  _connectDB(function(err,db) {
     db.collection(collectionName).update( { _id }, {
       [type]: json
     }, (err,result) => {

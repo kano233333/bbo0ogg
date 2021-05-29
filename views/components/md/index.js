@@ -10,7 +10,7 @@ let wt = new Watcher();
 wt.addSub('arr', []);
 wt.addEvent('arr', function(val){
   console.log(val)
-})
+});
 
 class Md extends React.Component {
   constructor(props){

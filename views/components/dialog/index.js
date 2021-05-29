@@ -8,7 +8,7 @@ class Dialog extends React.Component {
   }
   render(){
     return (
-      <div className={this.props.isAlertShow ? 'mask' : 'unshow'}>
+      <div className={this.props.isAlertShow ? 'mask fixed-center' : 'unshow'}>
         <div className="alert">
           <div className="cancel ball-img" onClick={this.props.shiftAlert}></div>
           { this.props.children }

@@ -19,21 +19,20 @@ class Comment extends React.Component {
       comment: this.refs.inputComment.value,
       name: this.refs.inputName.value || '壮士不留名',
       time: formatTime(new Date)
-    }
+    };
 
     ajax({
       url: '/pushComment',
       data: obj,
       method: 'POST',
       success: (res) => {
-        console.log(res)
-        if(res.static == 1) {
-          this.state.comments.unshift(obj)
+        if (res.state === 1) {
+          this.state.comments.unshift(obj);
           this.setState({
             comments: this.state.comments
-          })
-          this.refs.inputComment.value = ''
-          this.refs.inputName.value = ''
+          });
+          this.refs.inputComment.value = '';
+          this.refs.inputName.value = '';
         }
       }
     })

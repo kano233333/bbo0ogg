@@ -46,8 +46,8 @@ class Nav extends React.Component {
   }
   navJumpPage(item) {
     if (item.link) {
-      let paths = window.location.href.split('/');
-      const link = item.link + `?id=${paths[paths.length-1]}`;
+      const paths = window.location.href.split('/');
+      const link = item.link + (item.param ? `?id=${paths[paths.length - 1]}` : '');
       window.location.href = link;
     } else {
       Confirm.info(item.action.text);

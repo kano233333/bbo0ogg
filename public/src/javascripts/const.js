@@ -51,7 +51,8 @@ const moreNav = {
     {
       name: '修改',
       link: '/edit',
-      icon: 'revise'
+      icon: 'revise',
+      param: true
     },
     {
       name: '删除',

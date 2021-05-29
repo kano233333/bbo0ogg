@@ -75,4 +75,12 @@
     font-size: 16px;
     color: #333;
   }
+
+  .confirm-footer {
+    text-align: center;
+    button {
+      margin: 0 40px;
+      cursor: pointer;
+    }
+  }
 }

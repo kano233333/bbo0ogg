@@ -28,15 +28,14 @@ class Essay extends React.Component {
       },
       success: (res)=>{
         this.setState({
-          essay: res.data,
+          essay: res.result,
           loadding: true
-        })
+        });
       }
     })
   }
 
   getTitle(titles) {
-    console.log(titles)
     this.setState({
       titles: titles
     })

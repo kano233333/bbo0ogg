@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "supervisor ./bin/www",
-    "build": "webpack --mode production",
+    "build": "npx webpack --mode production",
     "start": "NODE_ENV=production node ./bin/www"
   },
   "dependencies": {
@@ -19,7 +19,7 @@
     "markdown-it-table-of-contents": "^0.4.4",
     "mongodb": "^2.2.33",
     "morgan": "~1.9.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.14.1",
     "react-router-dom": "^5.0.1"
   },
   "devDependencies": {

@@ -4,6 +4,7 @@ import Md from '../components/md'
 import Dialog from '../components/dialog'
 import InputBox from '../components/inputBox'
 import { ajax, formatTime } from '../components/common'
+import Confirm from '../components/dialog/confirm.js'
 
 const styleTop = {top: '-20px', zIndex:3};
 const styleBottom =  {top: '20px'};
@@ -11,6 +12,7 @@ class Edit extends React.Component {
   componentDidMount(){
     this.init();
   }
+
   constructor(props){
     super(props)
     this.state = {
@@ -27,45 +29,52 @@ class Edit extends React.Component {
     this.clickRight = this.clickRight.bind(this);
     this.getInputVal = this.getInputVal.bind(this);
     this.postEssay = this.postEssay.bind(this);
+    this.shiftValid = this.shiftValid.bind(this);
     this.shiftClear = this.shiftClear.bind(this);
     this.addTag = this.addTag.bind(this);
     this.delTag = this.delTag.bind(this);
     this.getRef = this.getRef.bind(this);
     this.getScrollEvent = this.getScrollEvent.bind(this);
   }
+
   init(){
     let ser = this.props.location.search;
     let re = /id=(\w+)&?/
-    if(re.test(ser)){
+    if ( re.test(ser) ) {
       let _id = ser.match(re)[1];
       this.state._id = _id;
       this.state.type = 'revice';
       ajax({
         url:'/getEssayDetail',
         method: 'POST',
-        data: {
-          _id: _id
-        },
-        success: (res)=>{
-          if(res.static == 1){
-            let _data = res.data;
+        data: { _id },
+        success: res => {
+          if (res.state === 1) {
+            let _data = res.result;
             this.refs.textDom.value = _data.content;
             this.refs.edit.resetContent(_data.content);
             this.state['titleRef'].value = _data.title;
             this.setState({
               content: _data.content,
               tags: _data.tag
-            })
+            });
           }
         }
       })
     }
   }
-  shiftAlert(){
+
+  shiftValid() {
+    const _this = this;
+    Confirm.info('输密码吧', value => _this.setState({isAlertShow: value}));
+  }
+
+  shiftAlert() {
     this.setState({
       isAlertShow: !this.state.isAlertShow
-    })
+    });
   }
+
   shiftClear(){
     this.refs.textDom.value = '';
     this.setState({
@@ -73,20 +82,23 @@ class Edit extends React.Component {
     })
     this.refs.edit.resetContent('');
   }
+
   clickLeft(){
     this.setState({
       styleLeft: styleTop,
       styleRight: styleBottom
-    })
+    });
   }
+
   clickRight(){
     this.setState({
       styleLeft: styleBottom,
       styleRight: styleTop
-    })
+    });
   }
+
   getInputVal(e){
-    if(e.persist){
+    if ( e.persist ) {
       e.persist();
     }
     this.setState({
@@ -94,6 +106,7 @@ class Edit extends React.Component {
     })
     this.refs.edit.resetContent(e.target.value)
   }
+
   getRef(key, value){
     this.state[key] = value;
   }
@@ -114,16 +127,18 @@ class Edit extends React.Component {
         tag: this.state.tags,
         type: this.state.type
       },
-      success: function(res){
-        if(res.static == 1){
-          window.location.href = '/main/essayTimeList'
+      success(res) {
+        const {state, result} = res;
+        if (state) {
+          window.location.href = `/main/essay/${result.id}`;
         }
       }
     })
   }
+
   addTag(){
     var val = this.state['tagRef'].value;
-    if(val == ''){
+    if (val == '') {
       return;
     }
     this.state.tags.push(val);
@@ -132,15 +147,18 @@ class Edit extends React.Component {
     })
     this.state['tagRef'].value = '';
   }
+
   delTag(index){
     this.state.tags.splice(index,1);
     this.setState({
       tags: this.state.tags
     })
   }
+
   getRef(key, ref){
     this.state[key] = ref;
   }
+
   getScrollEvent(){
     /*
      * 【 md输入 和 展示 两部分同步滚动 】
@@ -168,8 +186,8 @@ class Edit extends React.Component {
     return (
     <div id="container">
       <div className="edit-header">
-        <i onClick={this.shiftAlert.bind(this)}></i>
-        <i onClick={this.shiftClear.bind(this)}></i>
+        <i onClick={this.shiftValid}></i>
+        <i onClick={this.shiftClear}></i>
         <i></i>
         <i></i>
       </div>
